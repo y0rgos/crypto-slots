@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "crypto-slots"
+version = "0.1.0"
+description = ""
+authors = ["y0rgos <y0rgos@proton.me>"]
+readme = "README.md"
+packages = [{include = "crypto_slots"}]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.11"
+eth-brownie = "^1.19.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
