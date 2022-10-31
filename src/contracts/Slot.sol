@@ -1,4 +1,5 @@
 //SPDX-License-Identifier: UNLICENSED
+//Copyright (C) 2022 y0rgos - All Rights Reserved
 
 pragma solidity 0.8.17;
 
@@ -90,7 +91,8 @@ contract Slot {
         require(address(this).balance > 0, "Slot cannot pay you right now");
 
         if (
-            int256(address(this).balance) - int256(oweToAddress[msg.sender]) >= 0
+            int256(address(this).balance) - int256(oweToAddress[msg.sender]) >=
+            0
         ) {
             oweToAddress[msg.sender] = 0;
             payable(msg.sender).transfer(oweToAddress[msg.sender]);
