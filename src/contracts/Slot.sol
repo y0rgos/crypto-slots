@@ -29,7 +29,7 @@ contract Slot {
         payouts[0] = [2, 25];
         payouts[1] = [5, 45];
         payouts[2] = [10, 100];
-        payouts[3] = [25, 250];
+        payouts[3] = [15, 250];
         payouts[4] = [25, 550];
         payouts[5] = [45, 1650];
         payouts[6] = [150, 6550];
