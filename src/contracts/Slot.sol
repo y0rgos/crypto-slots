@@ -94,8 +94,9 @@ contract Slot {
             int256(address(this).balance) - int256(oweToAddress[msg.sender]) >=
             0
         ) {
+            uint256 amountToSend = oweToAddress[msg.sender]; 
             oweToAddress[msg.sender] = 0;
-            payable(msg.sender).transfer(oweToAddress[msg.sender]);
+            payable(msg.sender).transfer(amountToSend);
         } else {
             uint256 newOweAmount = oweToAddress[msg.sender] -
                 address(this).balance;
