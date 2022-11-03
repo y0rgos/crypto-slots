@@ -3,11 +3,12 @@
 
 pragma solidity 0.8.17;
 
-contract Slot {
+import "./OweMechanic.sol";
+
+contract Slot is OweMechanic {
     uint8[36] public reel;
     uint256 randNonce = 0;
     mapping(uint8 => uint256[2]) payouts;
-    mapping(address => uint256) public oweToAddress;
 
     constructor() {
         // The symbols on each reel (first place) and the number of occurrence (second place)
@@ -84,25 +85,6 @@ contract Slot {
         }
 
         return (result, payout);
-    }
-
-    function getOwedMoney() external {
-        require(oweToAddress[msg.sender] > 0, "Slot owes you nothing");
-        require(address(this).balance > 0, "Slot cannot pay you right now");
-
-        if (
-            int256(address(this).balance) - int256(oweToAddress[msg.sender]) >=
-            0
-        ) {
-            uint256 amountToSend = oweToAddress[msg.sender]; 
-            oweToAddress[msg.sender] = 0;
-            payable(msg.sender).transfer(amountToSend);
-        } else {
-            uint256 newOweAmount = oweToAddress[msg.sender] -
-                address(this).balance;
-            oweToAddress[msg.sender] = newOweAmount;
-            payable(msg.sender).transfer(address(this).balance);
-        }
     }
 
     // Temporary pseudorandom function
