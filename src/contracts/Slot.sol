@@ -11,7 +11,8 @@ contract Slot is OweMechanic {
     mapping(uint8 => uint256[2]) payouts;
 
     constructor() {
-        // The symbols on each reel (first place) and the number of occurrence (second place)
+        // The symbols on each reel and the number of occurrence
+        // (layout : [symbol, occurrence])
         uint8[2][8] memory symbols = [
             [0, 8],
             [1, 7],
@@ -24,9 +25,8 @@ contract Slot is OweMechanic {
         ];
 
         // Multiplier payouts of each combination, first place is x2, second place is x3
-        // (multipliers are x*10 because solidity does not support float numbers and they get x/10 after bet*payout calculation)
-
-        // ~= 95% RTP
+        // (Multipliers are multiplied by ten as of solidity does not support floating point numbers,
+        //  division by ten is done after the payout calculation)
         payouts[0] = [2, 25];
         payouts[1] = [5, 45];
         payouts[2] = [10, 100];
@@ -37,16 +37,12 @@ contract Slot is OweMechanic {
         payouts[7] = [1150, 10e4];
 
         // Populate the reels with symbols with their corresponding number of occurrence
-        // (this slot has 3 same reels so we use 1 reel)
-        uint8 reelCounter;
+        // (this slot has 3 same reels occur we use 1 reel)
+        uint8 counter;
         for (uint8 symbol = 0; symbol < symbols.length; symbol++) {
-            for (
-                uint8 symbolOccur = 0;
-                symbolOccur < symbols[symbol][1];
-                symbolOccur++
-            ) {
-                reel[reelCounter] = symbols[symbol][0];
-                reelCounter++;
+            for (uint8 occur = 0; occur < symbols[symbol][1]; occur++) {
+                reel[counter] = symbols[symbol][0];
+                counter++;
             }
         }
     }
@@ -68,20 +64,16 @@ contract Slot is OweMechanic {
             reel[randMod(36)]
         ];
 
-        // Check if player wins and calculate the reward
         uint256 payout = 0;
-        if (result[0] == result[1] && result[1] == result[2]) {
-            payout = (msg.value * payouts[result[0]][1]) / 10;
-        } else if (result[0] == result[1]) {
-            payout = (msg.value * payouts[result[0]][0]) / 10;
-        }
 
-        if (payout > 0) {
-            if (int256(address(this).balance) - int256(payout) >= 0) {
-                payable(msg.sender).transfer(payout);
-            } else {
-                oweToAddress[msg.sender] += payout;
-            }
+        // Checks if the symbols on reel 1 and 2 are the same
+        if (result[0] == result[1]) {
+            // Variable pos indicates which position is the multiplier on "payouts" array
+            uint8 pos = 0;
+            // Checks if the symbols on reel 2 and 3 are the same and update pos to the corresponding position
+            if (result[1] == result[2]) pos = 1;
+            payout = (msg.value * payouts[result[0]][pos]) / 10;
+            oweTo(msg.sender, payout);
         }
 
         return (result, payout);

@@ -6,8 +6,8 @@ from scripts.utils import to_wei
 
 
 @pytest.fixture(scope='function', autouse=True)
-def contract(fn_isolation, OweMechanic, a):
-    return OweMechanic.deploy({'from': a[0]})
+def contract(fn_isolation, TestOweMechanic, a):
+    return TestOweMechanic.deploy({'from': a[0]})
 
 
 def test_owes_same_as_owns(contract, a):
@@ -23,7 +23,7 @@ def test_owes_same_as_owns(contract, a):
     assert contract.oweToAddress(player) == 0
 
     # Contract now owes to player x amount of eth
-    contract.oweToSomeone(player, amount_owes,{'from': owner})
+    contract.testOweTo(player, amount_owes,{'from': owner})
     # Prove that the contract owes to player x amount of eth
     assert contract.oweToAddress(player.address) == amount_owes
 
@@ -58,7 +58,7 @@ def test_owes_more_than_owns(contract, a):
     assert contract.oweToAddress(player) == 0
 
     # Contract now owes to player x amount of eth
-    contract.oweToSomeone(player, amount_owes,{'from': owner})
+    contract.testOweTo(player, amount_owes,{'from': owner})
     # Prove that the contract owes to player x amount of eth
     assert contract.oweToAddress(player.address) == amount_owes
 
@@ -94,7 +94,7 @@ def test_owes_less_than_owns(contract, a):
     assert contract.oweToAddress(player) == 0
 
     # Contract now owes to player x amount of eth
-    contract.oweToSomeone(player, amount_owes,{'from': owner})
+    contract.testOweTo(player, amount_owes,{'from': owner})
     # Prove that the contract owes to player x amount of eth
     assert contract.oweToAddress(player.address) == amount_owes
 
