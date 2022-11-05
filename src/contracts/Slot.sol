@@ -37,8 +37,8 @@ contract Slot is OweMechanic {
         payouts[7] = [1150, 10e4];
 
         // Populate the reels with symbols with their corresponding number of occurrence
-        // (this slot has 3 same reels occur we use 1 reel)
-        uint8 counter;
+        // (this slot has 3 same reels so we use only 1 reel)
+        uint8 counter = 0;
         for (uint8 symbol = 0; symbol < symbols.length; symbol++) {
             for (uint8 occur = 0; occur < symbols[symbol][1]; occur++) {
                 reel[counter] = symbols[symbol][0];

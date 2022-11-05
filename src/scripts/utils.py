@@ -5,8 +5,8 @@ def get_accounts():
     if network.show_active() == 'development':
         return accounts
 
-def to_wei(ether):
+def eth_to_wei(ether):
     return Web3.toWei(ether, 'ether')
 
-def to_ether(wei):
+def wei_to_eth(wei):
     return Web3.fromWei(wei, 'ether')
