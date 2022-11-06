@@ -3,14 +3,14 @@
 
 pragma solidity 0.8.17;
 
-import "./OweMechanic.sol";
+import "./BalanceManager.sol";
 
-contract TestOweMechanic is OweMechanic{
+contract TestOweMechanic is BalanceManager{
 
     receive() external payable {}
 
     function testOweTo(address who, uint256 amount) external {
-        oweTo(who, amount);
+        updateBalance(who, amount);
     }
 
 }

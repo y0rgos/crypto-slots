@@ -3,9 +3,9 @@
 
 pragma solidity 0.8.17;
 
-import "./OweMechanic.sol";
+import "./BalanceManager.sol";
 
-contract Slot is OweMechanic {
+contract Slot is BalanceManager {
     uint8[36] public reel;
     uint256 randNonce = 0;
     mapping(uint8 => uint256[2]) payouts;
@@ -73,7 +73,7 @@ contract Slot is OweMechanic {
             // Checks if the symbols on reel 2 and 3 are the same and update pos to the corresponding position
             if (result[1] == result[2]) pos = 1;
             payout = (msg.value * payouts[result[0]][pos]) / 10;
-            oweTo(msg.sender, payout);
+            updateBalance(msg.sender, payout);
         }
 
         return (result, payout);

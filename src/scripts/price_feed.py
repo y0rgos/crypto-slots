@@ -4,7 +4,9 @@ from web3 import Web3
 
 def main():
     latestData = get_price()
+    print(((1*1e18) * (latestData[1])) / 1e6)
     p = latestData[1] / 1e8
+    print((1*1e18 * int(p))/ 1e18)
     print('/---------------------------------------------------')
     print('|ETH/USD (1 ETH To USD): ', p)
     print('|SLTK/USD (1 SLTKN To USD): ', 0.01)
