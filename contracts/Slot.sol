@@ -54,7 +54,7 @@ contract Slot is BalanceManager, PriceConsumerV3 {
     function spin(uint256 bet, uint256 spins)
         public
         payable
-        returns (uint256[] memory, uint256)
+        returns (uint8[3] memory, uint256)
     {
         /* bet = USD value * Ether Unit (Example: 0.2 * 1e18 = 2e17 (or 200000000000000000))
         Example: bet = 2e17, spins = 50 =>
