@@ -21,7 +21,7 @@ contract BalanceManager {
         require(address(this).balance > 0, "Zero Balance: Contract");
         require(block.timestamp >= lastWithdraw[msg.sender] + mustWait, "Wait 1 Hour From Last Withdraw");
 
-        uint256 amount = min(address(this).balance, addressToBalance[msg.sender]);
+        uint256 amount = Math.min(address(this).balance, addressToBalance[msg.sender]);
         lastWithdraw[msg.sender] = block.timestamp;
         addressToBalance[msg.sender] -= amount;
         payable(msg.sender).transfer(amount);

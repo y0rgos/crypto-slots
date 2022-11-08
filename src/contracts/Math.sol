@@ -3,6 +3,8 @@
 
 pragma solidity 0.8.17;
 
-function min(uint256 a, uint256 b) pure returns (uint256) {
-    return a < b ? a : b;
+library Math {
+    function min(uint256 a, uint256 b) internal pure returns (uint256) {
+        return a < b ? a : b;
+    }
 }
