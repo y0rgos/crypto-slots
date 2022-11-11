@@ -13,7 +13,7 @@
 Coming Soon...
 
 ## Payouts
-Symbol combinations are from left to right and must me consecutive
+Symbol combinations are from left to right and must be consecutive
 
 | Symbols | 2 Symbols | 3 Symbols |
 | ------- | --------- |-----------|
