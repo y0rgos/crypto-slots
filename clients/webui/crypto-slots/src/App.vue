@@ -153,7 +153,7 @@ export default {
     startSlot() {
       let r1 = this.reel[parseInt((this.randomWords[this.randomWordsCounter] % 100) % 36)]
       let r2 = this.reel[parseInt(((this.randomWords[this.randomWordsCounter] % 10000) / 100) % 36)]
-      let r3 = this.reel[parseInt(((this.randomWords[this.randomWordsCounter] % 1000000) / 100) % 36)]
+      let r3 = this.reel[parseInt(((this.randomWords[this.randomWordsCounter] % 1000000) / 10000) % 36)]
       this.reel1 = this.symbols[r1]
       this.reel2 = this.symbols[r2]
       this.reel3 = this.symbols[r3]
