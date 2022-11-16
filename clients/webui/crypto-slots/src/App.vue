@@ -20,8 +20,8 @@
     <button @click="reverseShowPayouts">Show Payouts</button>
     <div v-if="connected && !waitingForRespone">
       <p>Total Amount Won: ${{ playerSlotBalance * ethPrice }} ({{ playerSlotBalance }} ETH)<button v-if="playerSlotBalance" @click="withdraw">Withdraw</button></p>
-      <p>bet = <input type="range" v-model="bet" min="0.1" max="1" step="0.1" /> ${{ bet }}</p>
-      <p>spins = <input type="range" min="1" max="100" v-model="spins" /> {{ spins }}</p>
+      <p>Bet : <input type="range" v-model="bet" min="0.1" max="1" step="0.1" /> ${{ bet }}</p>
+      <p>Spins : <input type="range" min="1" max="100" v-model="spins" /> {{ spins }}</p>
       <p>Total: ${{ bet * spins }} ({{ (bet*spins)/ethPrice }} ETH)</p>
       <button @click="spin">Spin</button>
     </div>
