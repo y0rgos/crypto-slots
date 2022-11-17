@@ -1,20 +1,24 @@
 # Crypto Slots
 [Work In Progress] Autonomous decentralized slot machines with transparent algorithm
 
+### ⚠️WARNING⚠️ Project is not even close to a stable version, it contains a LOT of bugs, vulnerabilities and unoptimized code. Frontend is extremely poorly written, just a quick and dirty solution as I am not a frontend developer. Currenctly not deployed on any public network, you can run it only locally.
+
+
 # Table of Contents
 1. [How To Play](#how-to-play)
-2. [Payouts](#payouts)
-3. [Math Behind It](#math-behind-it)
+2. [Made With](#made-with)
+3. [Payouts](#payouts)
+4. [Math Behind It](#math-behind-it)
 
 
 ## How To Play
 
 Requirements:
-- [Ganache]() ```(host=127.0.0.1:8545, chainid=1337, mnemonic=brownie)``` 
-- [Python3]() ```(>=3.10)```
-- [Poetry]()
-- [Node.js (with npm)]()
-- Web Browser with [MetaMask]() installed and [configured](#configure-metamask)
+- [Ganache](https://www.npmjs.com/package/ganache-cli)
+- [Python3](https://www.python.org/) ```(>=3.10)```
+- [Poetry](https://python-poetry.org/)
+- [Node.js (with npm)](https://nodejs.org/en/)
+- Web Browser with [MetaMask](https://metamask.io/) installed and [configured](#configure-metamask)
 
 ### Blockchain section:
 
@@ -57,6 +61,9 @@ npm run dev
 3. Click Profile Icon > Import Account > Add Private Key ```0x804365e293b9fab9bd11bddd39082396d56d30779efbb3ffb0a6089027902c4a```
 
 #### Done, you are ready to play now.
+
+## Made With
+
 
 ## Payouts
 Symbol combinations are from left to right and must be consecutive
