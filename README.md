@@ -1,13 +1,10 @@
 # Crypto Slots
 [Work In Progress] Autonomous decentralized slot machines with transparent algorithm
 
-### ⚠️WARNING⚠️ Project is not even close to a stable version, it contains a LOT of bugs, vulnerabilities and unoptimized code. Frontend is extremely poorly written, just a quick and dirty solution as I am not a frontend developer. Currenctly not deployed on any public network, you can run it only locally.
-
 
 # Table of Contents
 1. [How To Play](#how-to-play)
 2. [Made With](#made-with)
-3. [Payouts](#payouts)
 4. [Math Behind It](#math-behind-it)
 
 
@@ -64,20 +61,11 @@ npm run dev
 
 ## Made With
 
-
-## Payouts
-Symbol combinations are from left to right and must be consecutive
-
-| Numbers | Symbols | 2 Symbols | 3 Symbols |
-| ------- | --------| --------- |-----------|
-| 0       | 🍋       | x0.2      | x2.5      |
-| 1       | 🍇       | x0.5      | x4.5      |
-| 2       | 🍉       | x1        | x10       |
-| 3       | 🍓       | x1.5      | x25       |
-| 4       | 🍒       | x2.5      | x55       |
-| 5       | 🌶️       | x4.5      | x165      |
-| 6       | 🍌       | x15       | x655      |
-| 7       | 🍄       | x115      | x10000    |
+- Frontend : VueJs
+- Blockchain: EVM
+- Smart Contract: Solidity
+- Framework: Brownie
+- Oracles: Chainlink VRF, Chainlink Price Feeds
 
 ## Math Behind It
 You can read the math behind on [math.xlsx](math.xlsx)
